@@ -1,10 +1,19 @@
-import { Heading } from "@radix-ui/themes";
+import { Pagination } from "antd";
+import { ContentCard } from "./_components/ContentCard";
 
 export default function Home() {
 	return (
 		<>
-			<div className="mt-40">
-				<Heading className="text-center mb-6">Home Page</Heading>
+			<div>
+				<div className="flex flex-col gap-4">
+					<ContentCard />
+					<ContentCard />
+					<ContentCard />
+					<ContentCard />
+				</div>
+				<div className="mt-4">
+					<Pagination defaultCurrent={1} total={50} />
+				</div>
 			</div>
 		</>
 	);

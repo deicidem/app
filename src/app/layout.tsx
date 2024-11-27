@@ -1,20 +1,9 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
-import "@radix-ui/themes/styles.css";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
 import "./globals.css";
-import { Container, Theme } from "@radix-ui/themes";
+import { Layout } from "antd";
+import { Content, Header } from "antd/es/layout/layout";
 import Navigation from "./ui/Navigation";
-
-const geistSans = localFont({
-	src: "./fonts/GeistVF.woff",
-	variable: "--font-geist-sans",
-	weight: "100 900",
-});
-const geistMono = localFont({
-	src: "./fonts/GeistMonoVF.woff",
-	variable: "--font-geist-mono",
-	weight: "100 900",
-});
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -28,11 +17,17 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-				<Theme>
-					<Navigation />
-					<Container>{children}</Container>
-				</Theme>
+			<body>
+				<AntdRegistry>
+					<Layout>
+						<Header className="fixed w-full z-50">
+							<Navigation />
+						</Header>
+						<Content className="pt-20 pb-10 !min-h-[100vh]">
+							<div className="container mx-auto">{children}</div>
+						</Content>
+					</Layout>
+				</AntdRegistry>
 			</body>
 		</html>
 	);
